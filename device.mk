@@ -51,21 +51,26 @@ AB_OTA_POSTINSTALL_CONFIG += \
     POSTINSTALL_PATH_system=system/bin/mtk_plpath_utils \
     FILESYSTEM_TYPE_system=ext4 \
     POSTINSTALL_OPTIONAL_system=true
-
-# Boot control HAL
-PRODUCT_PACKAGES += \
-    android.hardware.boot@1.1-impl.recovery
-
-# fastbootd
-PRODUCT_PACKAGES += \
-    android.hardware.fastboot@1.0-impl-mock \
-    fastbootd
-    
+   
 # Additional target Libraries
 TARGET_RECOVERY_DEVICE_MODULES += \
-    libkeymaster4 \
-    libpuresoftkeymasterdevice
+    android.hardware.keymaster@4.1
 
 TW_RECOVERY_ADDITIONAL_RELINK_LIBRARY_FILES += \
-    $(TARGET_OUT_SHARED_LIBRARIES)/libkeymaster4.so \
-    $(TARGET_OUT_SHARED_LIBRARIES)/libpuresoftkeymasterdevice.so
+    $(TARGET_OUT_SHARED_LIBRARIES)/android.hardware.keymaster@4.1.so
+
+# Health
+PRODUCT_PACKAGES += \
+    android.hardware.health@2.1-impl \
+    android.hardware.health@2.1-service
+
+# Bootctrl
+PRODUCT_PACKAGES += \
+    android.hardware.boot@1.2-mtkimpl \
+    android.hardware.boot@1.2-mtkimpl.recovery
+
+PRODUCT_PACKAGES_DEBUG += \
+    bootctrl
+
+PRODUCT_PACKAGES += \
+    android.system.keystore2
