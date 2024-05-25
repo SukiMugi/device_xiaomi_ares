@@ -78,3 +78,9 @@ TW_RECOVERY_ADDITIONAL_RELINK_LIBRARY_FILES += \
 
 PRODUCT_PACKAGES += \
     android.system.keystore2
+
+TARGET_RECOVERY_DEVICE_MODULES += \
+    android.hardware.keymaster@4.1
+
+TW_RECOVERY_ADDITIONAL_RELINK_LIBRARY_FILES += \
+    $(TARGET_OUT_SHARED_LIBRARIES)/android.hardware.keymaster@4.1.so
