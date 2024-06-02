@@ -43,16 +43,23 @@ service mtk.plpath.utils.link /system/bin/mtk_plpath_utils
     disabled
     seclabel u:r:recovery:s0
 
-service keystore_auth /system/bin/keystore_auth
-    oneshot
-    user system
-    group root
-    disabled
+service wait_for_keymaster /system/bin/wait_for_keymaster
+    user root
+    group root system
+    priority -20
+    ioprio rt 0
     seclabel u:r:recovery:s0
 
 service keystore /system/bin/keystore /tmp/misc/keystore
     user root
     group root drmrpc readproc log
+    disabled
+    seclabel u:r:recovery:s0
+
+service keystore_auth /system/bin/keystore_auth
+    oneshot
+    user system
+    group root
     disabled
     seclabel u:r:recovery:s0
 
