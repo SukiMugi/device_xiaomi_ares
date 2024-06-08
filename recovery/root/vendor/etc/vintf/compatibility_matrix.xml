@@ -11,6 +11,15 @@
         <name>android.hidl.allocator</name>
         <version>1.0</version>
     </hal>
+    <hal format="aidl" optional="true"> 
+        <name>android.system.keystore2</name> 
+        <version>1.0</version> 
+        <interface> 
+        <name>IKeystoreService</name> 
+        <instance>default</instance> 
+        </interface> 
+</hal>
+
     <hal format="hidl" optional="false">
         <name>android.hidl.manager</name>
         <version>1.0</version>
