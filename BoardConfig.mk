@@ -139,6 +139,7 @@ BOARD_BUILD_SYSTEM_ROOT_IMAGE := false
 
 # Treble
 BOARD_VNDK_VERSION := current
+BOARD_SYSTEMSDK_VERSIONS :=33
 
 # TWRP specific build flags
 #TW_DEVICE_VERSION := 解密Test
