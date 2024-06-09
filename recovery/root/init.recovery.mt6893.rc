@@ -1,4 +1,5 @@
-
+# Beanpod
+import /microtrust.rc
 
 # Mitee
 import /miteelog.rc
