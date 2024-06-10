@@ -140,6 +140,10 @@ BOARD_ROOT_EXTRA_FOLDERS += cust
 # System as root
 BOARD_BUILD_SYSTEM_ROOT_IMAGE := false
 
+# Filesystem
+TARGET_USERIMAGES_USE_F2FS := true
+TARGET_USERIMAGES_USE_EXT4 := true
+
 # Treble
 BOARD_VNDK_VERSION := current
 
