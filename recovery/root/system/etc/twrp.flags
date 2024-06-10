@@ -4,16 +4,16 @@
 
 # Currently we dont have e2fsck compiled. So fs check would failed.
 # mount point       fstype    device                                                                flags
-/boot               emmc      /dev/block/by-name/boot                                               flags=slotselect;display="Boot";flashimg=1;backup=1
-/dtbo               emmc      /dev/block/by-name/dtbo                                               flags=slotselect;display="Dtbo";flashimg=1;backup=1
-
 # Persistent Firmware & Properties
+/data          f2fs    /dev/block/by-name/userdata                    flags=fileencryption=aes-256-xts:aes-256-cts:v2+inlinecrypt_optimized+wrappedkey_v0,metadata_encryption=aes-256-xts:wrappedkey_v0,keydirectory=/metadata/vold/metadata_encryption
+/metadata      ext4    /dev/block/by-name/metadata                    flags=display="Metadata";backup=1;wrappedkey
 /persist	    ext4      /dev/block/by-name/persist 			                    flags=display="Persist";fsflags=ro
 /persist_image	    emmc      /dev/block/by-name/persist 				            flags=display="Persist";backup=1
     
 # Partitions updated by stock ROM
 /audio_dsp          emmc      /dev/block/by-name/audio_dsp                                          flags=backup=1;display="Firmware-Update"
-
+/boot          emmc    /dev/block/by-name/boot                        flags=backup=1;flashimg=1;slotselect
+/dtbo          emmc    /dev/block/by-name/dtbo                        flags=backup=1;display="Dtbo";flashimg=1;slotselect
 /cam_vpu1           emmc      /dev/block/by-name/cam_vpu1                                           flags=backup=1;subpartitionof=/audio_dsp
 /cam_vpu2           emmc      /dev/block/by-name/cam_vpu2                                           flags=backup=1;subpartitionof=/audio_dsp
 /cam_vpu3           emmc      /dev/block/by-name/cam_vpu3                                           flags=backup=1;subpartitionof=/audio_dsp
@@ -49,4 +49,4 @@
 /pi_img             emmc      /dev/block/by-name/pi_img                                             flags=backup=1;subpartitionof=/audio_dsp
 
 # removable
-/usb-otg            vfat      /dev/block/sdd1                                                       flags=display="usb-otg";storage;wipeingui;removable;fsflags="utf8"
+/usb-otg         vfat     /dev/block/sdd1                                   flags=display="usb-otg";storage;wipeingui;removable;fsflags="utf8"
