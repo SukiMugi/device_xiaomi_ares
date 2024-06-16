@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2023 The TWRP Open Source Project
+# Copyright (C) 2021 The TWRP Open Source Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -40,11 +40,10 @@ TARGET_USES_UEFI := true
 # Platform
 TARGET_BOARD_PLATFORM := mt6893
 
-# Assert
-TARGET_OTA_ASSERT_DEVICE := ares,aresin
+
 
 # Kernel
-BOARD_KERNEL_CMDLINE := bootopt=64S3,32N2,64N2 buildvariant=user
+BOARD_KERNEL_CMDLINE := bootopt=64S3,32N2,64N2
 TARGET_PREBUILT_KERNEL := $(DEVICE_PATH)/prebuilt/Image.gz
 TARGET_PREBUILT_DTB := $(DEVICE_PATH)/prebuilt/dtb.img
 BOARD_BOOTIMG_HEADER_VERSION := 2
@@ -53,13 +52,11 @@ BOARD_KERNEL_PAGESIZE := 2048
 BOARD_RAMDISK_OFFSET := 0x11088000
 BOARD_KERNEL_TAGS_OFFSET := 0x07c08000
 BOARD_DTB_OFFSET := 0x07c08000
-
 BOARD_MKBOOTIMG_ARGS += --dtb $(TARGET_PREBUILT_DTB)
 BOARD_MKBOOTIMG_ARGS += --ramdisk_offset $(BOARD_RAMDISK_OFFSET)
 BOARD_MKBOOTIMG_ARGS += --tags_offset $(BOARD_KERNEL_TAGS_OFFSET)
 BOARD_MKBOOTIMG_ARGS += --header_version $(BOARD_BOOTIMG_HEADER_VERSION)
 BOARD_KERNEL_IMAGE_NAME := Image.gz
-
 ifeq ($(TARGET_PREBUILT_KERNEL),)
   TARGET_KERNEL_CONFIG := ares_user_defconfig
   TARGET_KERNEL_SOURCE := kernel/xiaomi/ares
@@ -99,6 +96,7 @@ PLATFORM_SECURITY_PATCH := 2099-12-31
 
 # fstab
 TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/recovery.fstab
+TARGET_RECOVERY_WIPE := $(DEVICE_PATH)/recovery.wipe
 
 # Partitions
 BOARD_BOOTIMAGE_PARTITION_SIZE := 134217728
@@ -115,6 +113,11 @@ BOARD_SUPER_PARTITION_SIZE := 9125756928
 BOARD_MAIN_PARTITION_LIST := odm product system system_ext vendor
 BOARD_MAIN_SIZE := 4400000000 # ( BOARD_SUPER_PARTITION_SIZE / 2 - overhead ) # Approximate overhead
 BOARD_FLASH_BLOCK_SIZE := 131072 # (BOARD_KERNEL_PAGESIZE * 64)
+TARGET_COPY_OUT_ODM := odm
+TARGET_COPY_OUT_VENDOR := vendor
+
+# Properties
+TARGET_SYSTEM_PROP += $(DEVICE_PATH)/system.prop
 
 # Recovery
 BOARD_HAS_LARGE_FILESYSTEM := true
@@ -129,11 +132,6 @@ BOARD_ROOT_EXTRA_FOLDERS += cust
 
 # System as root
 BOARD_BUILD_SYSTEM_ROOT_IMAGE := false
-
-# Filesystem
-BOARD_USERDATAIMAGE_FILE_SYSTEM_TYPE := f2fs
-TARGET_USERIMAGES_USE_F2FS := true
-TARGET_USERIMAGES_USE_EXT4 := true
 
 # Treble
 BOARD_VNDK_VERSION := current
