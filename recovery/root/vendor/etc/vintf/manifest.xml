@@ -1,11 +1,13 @@
 <!--
     Input:
+        manifest_nfc.xml
+        manifest_uicc_ese.xml
         manifest.xml
         manifest_displayfeature.xml
-        manifest_uicc.xml
         manifest_sla.xml
         manifest_vendor.xiaomi.hardware.mlipay.xml
         manifest_vendor.xiaomi.hardware.mtdservice.xml
+        manifest_vendor.xiaomi.hardware.soterservice.xml
         manifest_vendor.xiaomi.hardware.tidaservice.xml
         manifest_vendor.xiaomi.hardware.vsimapp.xml
         manifest_vendor.xiaomi.hardware.mfidoca.xml
@@ -26,8 +28,6 @@
         manifest_mtkcodecservice.xml
         manifest_km4.xml
         manifest_tee.xml
-        manifest.microtrust.xml
-        manifest_wechat.xml
         manifest_keyinstall.xml
         manifest_log.xml
         manifest_mdmonitor.xml
@@ -38,7 +38,8 @@
         manifest_pq.xml
         manifest_mmservice.xml
         manifest_mmagent.xml
-        manifest_nwk_opt.xml
+        manifest_dmc.xml
+        manifest_apmonitor.xml
         manifest_gnss.xml
         manifest.xml
 -->
@@ -82,6 +83,16 @@
             <instance>default</instance>
         </interface>
         <fqname>@2.0::IBluetoothAudioProvidersFactory/default</fqname>
+    </hal>
+    <hal format="hidl">
+        <name>android.hardware.boot</name>
+        <transport>hwbinder</transport>
+        <version>1.0</version>
+        <interface>
+            <name>IBootControl</name>
+            <instance>default</instance>
+        </interface>
+        <fqname>@1.0::IBootControl/default</fqname>
     </hal>
     <hal format="hidl">
         <name>android.hardware.camera.provider</name>
@@ -191,6 +202,16 @@
         <fqname>@1.0::IMemtrack/default</fqname>
     </hal>
     <hal format="hidl">
+        <name>android.hardware.nfc</name>
+        <transport>hwbinder</transport>
+        <version>1.2</version>
+        <interface>
+            <name>INfc</name>
+            <instance>default</instance>
+        </interface>
+        <fqname>@1.2::INfc/default</fqname>
+    </hal>
+    <hal format="hidl">
         <name>android.hardware.radio</name>
         <transport>hwbinder</transport>
         <version>1.2</version>
@@ -256,8 +277,10 @@
         <interface>
             <name>ISecureElement</name>
             <instance>SIM1</instance>
+            <instance>eSE1</instance>
         </interface>
         <fqname>@1.2::ISecureElement/SIM1</fqname>
+        <fqname>@1.2::ISecureElement/eSE1</fqname>
     </hal>
     <hal format="hidl">
         <name>android.hardware.sensors</name>
@@ -344,6 +367,16 @@
         <fqname>@1.0::IAee/default</fqname>
     </hal>
     <hal format="hidl">
+        <name>vendor.mediatek.hardware.apmonitor</name>
+        <transport>hwbinder</transport>
+        <version>2.0</version>
+        <interface>
+            <name>IApmService</name>
+            <instance>apm_hidl_service</instance>
+        </interface>
+        <fqname>@2.0::IApmService/apm_hidl_service</fqname>
+    </hal>
+    <hal format="hidl">
         <name>vendor.mediatek.hardware.apuware.apusys</name>
         <transport>hwbinder</transport>
         <version>1.0</version>
@@ -422,6 +455,16 @@
             <instance>internal/0</instance>
         </interface>
         <fqname>@1.0::IISPModule/internal/0</fqname>
+    </hal>
+    <hal format="hidl">
+        <name>vendor.mediatek.hardware.dmc</name>
+        <transport>hwbinder</transport>
+        <version>1.2</version>
+        <interface>
+            <name>IDmcService</name>
+            <instance>dmc_hidl_service</instance>
+        </interface>
+        <fqname>@1.2::IDmcService/dmc_hidl_service</fqname>
     </hal>
     <hal format="hidl">
         <name>vendor.mediatek.hardware.engineermode</name>
@@ -629,16 +672,6 @@
         <fqname>@1.1::INvram/default</fqname>
     </hal>
     <hal format="hidl">
-        <name>vendor.mediatek.hardware.nwk_opt</name>
-        <transport>hwbinder</transport>
-        <version>1.0</version>
-        <interface>
-            <name>INwkOpt</name>
-            <instance>default</instance>
-        </interface>
-        <fqname>@1.0::INwkOpt/default</fqname>
-    </hal>
-    <hal format="hidl">
         <name>vendor.mediatek.hardware.pq</name>
         <transport>hwbinder</transport>
         <version>2.8</version>
@@ -677,26 +710,6 @@
             <instance>default</instance>
         </interface>
         <fqname>@2.0::ISupplicant/default</fqname>
-    </hal>
-    <hal format="hidl">
-        <name>vendor.microtrust.hardware.soter</name>
-        <transport>hwbinder</transport>
-        <version>1.0</version>
-        <interface>
-            <name>ISoter</name>
-            <instance>default</instance>
-        </interface>
-        <fqname>@1.0::ISoter/default</fqname>
-    </hal>
-    <hal format="hidl">
-        <name>vendor.microtrust.hardware.thh</name>
-        <transport>hwbinder</transport>
-        <version>2.0</version>
-        <interface>
-            <name>IThhDevice</name>
-            <instance>default</instance>
-        </interface>
-        <fqname>@2.0::IThhDevice/default</fqname>
     </hal>
     <hal format="hidl">
         <name>vendor.qti.sla.service</name>
@@ -757,6 +770,16 @@
             <instance>default</instance>
         </interface>
         <fqname>@1.2::IMTService/default</fqname>
+    </hal>
+    <hal format="hidl">
+        <name>vendor.xiaomi.hardware.soterservice</name>
+        <transport>hwbinder</transport>
+        <version>1.0</version>
+        <interface>
+            <name>ISoter</name>
+            <instance>default</instance>
+        </interface>
+        <fqname>@1.0::ISoter/default</fqname>
     </hal>
     <hal format="hidl">
         <name>vendor.xiaomi.hardware.tidaservice</name>
