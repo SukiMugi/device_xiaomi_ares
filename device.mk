@@ -52,24 +52,28 @@ AB_OTA_POSTINSTALL_CONFIG += \
     FILESYSTEM_TYPE_system=ext4 \
     POSTINSTALL_OPTIONAL_system=true
 
-# Boot control HAL
+# Fastbootd
 PRODUCT_PACKAGES += \
-    android.hardware.boot@1.1-impl.recovery
+    fastbootd \
+    android.hardware.fastboot@1.0-impl-mock
 
-# fastbootd
+# Health HAL
 PRODUCT_PACKAGES += \
-    android.hardware.fastboot@1.0-impl-mock \
-    fastbootd
-    
-# Additional target Libraries
+    android.hardware.health@2.1-service \
+    android.hardware.health@2.1-impl
+
+# Gatekeeper
+PRODUCT_PACKAGES += \
+    android.hardware.gatekeeper@1.0-service
+
+PRODUCT_COPY_FILES += \
+$(OUT_DIR)/target/product/pissarro/vendor/bin/hw/android.hardware.gatekeeper@1.0-service:$(TARGET_COPY_OUT_RECOVERY)/root/system/bin/android.hardware.gatekeeper@1.0-service
+
+# Additional Libraries
 TARGET_RECOVERY_DEVICE_MODULES += \
     libkeymaster4 \
     libpuresoftkeymasterdevice
 
-TW_RECOVERY_ADDITIONAL_RELINK_LIBRARY_FILES += \
+RECOVERY_LIBRARY_SOURCE_FILES += \
     $(TARGET_OUT_SHARED_LIBRARIES)/libkeymaster4.so \
     $(TARGET_OUT_SHARED_LIBRARIES)/libpuresoftkeymasterdevice.so
-
-# Keystore2
-PRODUCT_PACKAGES += \
-    android.system.keystore2
