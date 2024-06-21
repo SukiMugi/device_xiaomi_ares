@@ -67,7 +67,7 @@ PRODUCT_PACKAGES += \
     android.hardware.gatekeeper@1.0-service
 
 PRODUCT_COPY_FILES += \
-$(OUT_DIR)/target/product/pissarro/vendor/bin/hw/android.hardware.gatekeeper@1.0-service:$(TARGET_COPY_OUT_RECOVERY)/root/system/bin/android.hardware.gatekeeper@1.0-service
+$(OUT_DIR)/target/product/ares/vendor/bin/hw/android.hardware.gatekeeper@1.0-service:$(TARGET_COPY_OUT_RECOVERY)/root/system/bin/android.hardware.gatekeeper@1.0-service
 
 # Additional Libraries
 TARGET_RECOVERY_DEVICE_MODULES += \
