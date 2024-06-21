@@ -122,6 +122,7 @@
 /dev/ccci3_raw_audio            0660   audio      audio
 /dev/eemcs_aud            0660   audio      audio
 /dev/irtx                 0660   system     system
+/dev/lirc*                0660   root       system
 /dev/ir-learning          0660   system     system
 # SGX device node
 /dev/pvrsrvkm             0666   root       root
@@ -134,6 +135,18 @@
 /sys/devices/platform/leds-mt65xx/leds/red   delay_off      0664  system   system
 /sys/devices/platform/leds-mt65xx/leds/blue   delay_on      0664  system   system
 /sys/devices/platform/leds-mt65xx/leds/blue   delay_off      0664  system   system
+/sys/class/leds/red            delay_on     0640    system    system
+/sys/class/leds/red            delay_off    0640    system    system
+/sys/class/leds/green          delay_on     0640    system    system
+/sys/class/leds/green          delay_off    0640    system    system
+/sys/class/leds/blue           delay_on     0640    system    system
+/sys/class/leds/blue           delay_off    0640    system    system
+/sys/class/leds/red-right      delay_on     0640    system    system
+/sys/class/leds/red-right      delay_off    0640    system    system
+/sys/class/leds/green-right    delay_on     0640    system    system
+/sys/class/leds/green-right    delay_off    0640    system    system
+/sys/class/leds/blue-right     delay_on     0640    system    system
+/sys/class/leds/blue-right     delay_off    0640    system    system
 
 #GPIO
 /dev/mtgpio               0600   radio      root
@@ -161,7 +174,3 @@
 
 #MTK In-House TEE
 /dev/ttyACM0              0660   radio      radio
-
-#elliptic sensor
-/dev/elliptic0            0644   system     system
-/dev/elliptic1            0644   system     system
