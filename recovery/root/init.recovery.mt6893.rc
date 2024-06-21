@@ -1,6 +1,9 @@
 # Beanpod
 import /microtrust.rc
 
+ # Start Boot HAL
+start boot-hal-1-2
+
 on init
     export LD_LIBRARY_PATH /system/lib64:/vendor/lib64:/vendor/lib64/hw
 
@@ -8,7 +11,6 @@ on fs
     install_keyring
 
 on post-fs
-    start boot-hal-1-1
     start mtk.plpath.utils.link
 
     # Support A/B feature for EMMC and UFS boot region
