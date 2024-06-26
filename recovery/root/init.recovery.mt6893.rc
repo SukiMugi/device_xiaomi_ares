@@ -1,4 +1,4 @@
-import /microtrust.rc
+import /init.recovery.microtrust.rc
 
 on post-fs
     start mtk.plpath.utils.link
