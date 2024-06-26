@@ -1,11 +1,11 @@
 #
-# Copyright (C) 2021 The TWRP Open Source Project
+# Copyright (C) 2022 The OrangeFox Recovery Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
 #
-#     http://www.apache.org/licenses/LICENSE-2.0
+# http://www.apache.org/licenses/LICENSE-2.0
 #
 # Unless required by applicable law or agreed to in writing, software
 # distributed under the License is distributed on an "AS IS" BASIS,
@@ -16,20 +16,17 @@
 
 # Inherit from those products. Most specific first.
 $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
-$(call inherit-product, $(SRC_TARGET_DIR)/product/base.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base.mk)
 
-# Installs gsi keys into ramdisk, to boot a developer GSI with verified boot.
-$(call inherit-product, $(SRC_TARGET_DIR)/product/gsi_keys.mk)
-
-# Inherit from our custom product configuration
-$(call inherit-product, vendor/twrp/config/common.mk)
-
-# Device specific configs
+# Inherit from fleur device
 $(call inherit-product, device/xiaomi/ares/device.mk)
 
-## Device identifier. This must come after all inclusions
+# Inherit some common TWRP stuff.
+$(call inherit-product, vendor/twrp/config/common.mk)
+
+# Device identifier. This must come after all inclusions
 PRODUCT_DEVICE := ares
 PRODUCT_NAME := twrp_ares
-PRODUCT_BRAND := Xiaomi	
+PRODUCT_BRAND := Redmi
 PRODUCT_MODEL := M2104K10I
 PRODUCT_MANUFACTURER := Xiaomi 
