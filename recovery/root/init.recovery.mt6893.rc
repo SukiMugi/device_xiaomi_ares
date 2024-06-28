@@ -67,12 +67,14 @@ service keymaster-4-0 /system/bin/android.hardware.keymaster@4.0-service.beanpod
     oneshot
     seclabel u:r:recovery:s0
 
-on property:crypto.ready=1
-    start keymaster-4-0
-
 on property:hwservicemanager.ready=true
-    start keymaster-4-0
     start gatekeeper-1-0
+
+on property:hwservicemanager.ready=true && property:ro.boot.tee_type=1
+    stop keymaster-4-0
+
+on property:hwservicemanager.ready=true && property:ro.boot.tee_type=2
+    start keymaster-4-0
 
 on property:ro.crypto.state=unsupported
     stop teei_daemon
@@ -80,12 +82,12 @@ on property:ro.crypto.state=unsupported
     stop gatekeeper-1-0
 
 on property:ro.crypto.state=unencrypted
-    stop teei_daemon
+    stop teei_daemon    
     stop keymaster-4-0
     stop gatekeeper-1-0
 
 on property:twrp.decrypt.done=true
-    stop teei_daemon
+    stop teei_daemon  
     stop keymaster-4-0
     stop gatekeeper-1-0
 
