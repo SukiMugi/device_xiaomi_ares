@@ -27,16 +27,6 @@
         <name>android.system.wifi.keystore</name>
         <version>1.0</version>
     </hal>
-    <manifest version="1.0" type="framework">
-    <hal format="aidl">
-        <name>android.system.keystore2</name>
-        <version>2</version>
-        <interface>
-            <name>IKeystoreService</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
-</manifest>
     <vendor-ndk>
         <version>31</version>
     </vendor-ndk>
