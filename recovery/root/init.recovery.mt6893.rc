@@ -85,12 +85,13 @@ service keymaster-4-0-mitee /system/bin/android.hardware.keymaster@4.0-service.m
 
 on property:hwservicemanager.ready=true
     start gatekeeper-1-0
+    start keymaster-4-0-beanpod
 
-on property:hwservicemanager.ready=true && property:ro.boot.tee_type=1
+on property:ro.boot.tee_type=1
     stop keymaster-4-0-beanpod
     start keymaster-4-0-mitee
 
-on property:hwservicemanager.ready=true && property:ro.boot.tee_type=2
+on property:ro.boot.tee_type=2
     stop keymaster-4-0-mitee
     start keymaster-4-0-beanpod
 
