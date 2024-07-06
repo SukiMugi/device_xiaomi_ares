@@ -62,12 +62,6 @@ service keystore /system/bin/keystore /tmp/misc/keystore
     disabled
     seclabel u:r:recovery:s0
 
-service keystore2 /system/bin/keystore2 /data/misc/keystore
-    user root
-    group root drmrpc readproc log
-    disabled
-    seclabel u:r:recovery:s0
-
 service gatekeeper-1-0 /system/bin/android.hardware.gatekeeper@1.0-service
     interface android.hardware.gatekeeper@1.0::IGatekeeper default
     user root
@@ -75,7 +69,14 @@ service gatekeeper-1-0 /system/bin/android.hardware.gatekeeper@1.0-service
     disabled
     seclabel u:r:recovery:s0
 
-service keymaster-4-0 /system/bin/android.hardware.keymaster@4.0-service.beanpod
+service keymaster-4-0-beanpod /system/bin/android.hardware.keymaster@4.0-service.beanpod
+    user root
+    group root drmrpc
+    oneshot    
+    disabled
+    seclabel u:r:recovery:s0
+
+service keymaster-4-0-mitee /system/bin/android.hardware.keymaster@4.0-service.mitee
     user root
     group root drmrpc
     oneshot    
