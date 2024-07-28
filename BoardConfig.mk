@@ -14,7 +14,7 @@
 # limitations under the License.
 #
 
-DEVICE_PATH := device/xiaomi/agate
+DEVICE_PATH := device/xiaomi/ares
 
 # For building with minimal manifest
 ALLOW_MISSING_DEPENDENCIES := true
@@ -41,7 +41,7 @@ TARGET_USES_UEFI := true
 TARGET_BOARD_PLATFORM := mt6893
 
 # Assert
-TARGET_OTA_ASSERT_DEVICE := agate,agatein,amber
+TARGET_OTA_ASSERT_DEVICE := ares
 
 # Kernel
 BOARD_KERNEL_CMDLINE := bootopt=64S3,32N2,64N2
@@ -164,3 +164,5 @@ TW_NO_HAPTICS := true
 TW_SCREEN_BLANK_ON_BOOT:= true
 TW_THEME := portrait_hdpi
 TWRP_INCLUDE_LOGCAT := true
+
+OF_MAINTAINER := SunsetDreamer
