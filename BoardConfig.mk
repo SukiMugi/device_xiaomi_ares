@@ -73,7 +73,6 @@ BOARD_KERNEL_IMAGE_NAME := Image.gz
 TARGET_BOARD_PLATFORM := mt6893
 
 # Fstab
-# fstab
 TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/recovery.fstab
 
 # File systems
