@@ -72,6 +72,10 @@ BOARD_KERNEL_IMAGE_NAME := Image.gz
 # Platform
 TARGET_BOARD_PLATFORM := mt6893
 
+# Fstab
+# fstab
+TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/recovery.fstab
+
 # File systems
 BOARD_HAS_LARGE_FILESYSTEM := true
 BOARD_SYSTEMIMAGE_PARTITION_TYPE := ext4
